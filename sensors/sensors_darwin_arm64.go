@@ -146,7 +146,16 @@ func (ta *temperatureArm) getThermalValues(system unsafe.Pointer) []float64 {
 	var i int32
 	for i = 0; i < count; i++ {
 		sc := ta.cfArrayGetValueAtIndex(uintptr(matchingsrvs), i)
+		if sc == nil {
+			continue
+		}
 		event := ioHIDServiceClientCopyEvent(uintptr(sc), common.KIOHIDEventTypeTemperature, 0, 0)
+		if event == nil {
+			values = append(values, 0.0)
+			continue
+		}
+		defer ta.cfRelease(uintptr(event))
+
 		temp := 0.0
 
 		if event != nil {
