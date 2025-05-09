@@ -129,39 +129,38 @@ func (ta *temperatureArm) getProductNames(system unsafe.Pointer) []string {
 }
 
 func (ta *temperatureArm) getThermalValues(system unsafe.Pointer) []float64 {
+	// Get function pointers without using deferred wrappers
 	ioHIDServiceClientCopyEvent := common.GetFunc[common.IOHIDServiceClientCopyEventFunc](ta.ioKit, common.IOHIDServiceClientCopyEventSym)
 	ioHIDEventGetFloatValue := common.GetFunc[common.IOHIDEventGetFloatValueFunc](ta.ioKit, common.IOHIDEventGetFloatValueSym)
 
 	ta.ioHIDEventSystemClientSetMatching(uintptr(system), uintptr(ta.sensors))
-	matchingsrvs := ta.ioHIDEventSystemClientCopyServices(uintptr(system))
 
+	matchingsrvs := ta.ioHIDEventSystemClientCopyServices(uintptr(system))
 	if matchingsrvs == nil {
-		return nil
+		return []float64{}
 	}
+
 	defer ta.cfRelease(uintptr(matchingsrvs))
 
 	count := ta.cfArrayGetCount(uintptr(matchingsrvs))
-
 	var values []float64
 	var i int32
+
 	for i = 0; i < count; i++ {
 		sc := ta.cfArrayGetValueAtIndex(uintptr(matchingsrvs), i)
 		if sc == nil {
+			values = append(values, 0.0)
 			continue
 		}
+
 		event := ioHIDServiceClientCopyEvent(uintptr(sc), common.KIOHIDEventTypeTemperature, 0, 0)
 		if event == nil {
 			values = append(values, 0.0)
 			continue
 		}
-		defer ta.cfRelease(uintptr(event))
 
-		temp := 0.0
-
-		if event != nil {
-			temp = ioHIDEventGetFloatValue(uintptr(event), ioHIDEventFieldBase(common.KIOHIDEventTypeTemperature))
-			ta.cfRelease(uintptr(event))
-		}
+		temp := ioHIDEventGetFloatValue(uintptr(event), ioHIDEventFieldBase(common.KIOHIDEventTypeTemperature))
+		ta.cfRelease(uintptr(event))
 
 		values = append(values, temp)
 	}
