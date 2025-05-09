@@ -13,7 +13,7 @@ import (
 	"github.com/yusufpapurcu/wmi"
 	"golang.org/x/sys/windows"
 
-	"github.com/shirou/gopsutil/v4/internal/common"
+	"github.com/henrygd/gopsutil/v4/internal/common"
 )
 
 var (

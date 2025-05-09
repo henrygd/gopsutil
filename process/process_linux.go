@@ -19,9 +19,9 @@ import (
 	"github.com/tklauser/go-sysconf"
 	"golang.org/x/sys/unix"
 
-	"github.com/shirou/gopsutil/v4/cpu"
-	"github.com/shirou/gopsutil/v4/internal/common"
-	"github.com/shirou/gopsutil/v4/net"
+	"github.com/henrygd/gopsutil/v4/cpu"
+	"github.com/henrygd/gopsutil/v4/internal/common"
+	"github.com/henrygd/gopsutil/v4/net"
 )
 
 var pageSize = uint64(os.Getpagesize())
@@ -133,7 +133,7 @@ func (p *Process) StatusWithContext(ctx context.Context) ([]string, error) {
 }
 
 func (p *Process) ForegroundWithContext(ctx context.Context) (bool, error) {
-	// see https://github.com/shirou/gopsutil/issues/596#issuecomment-432707831 for implementation details
+	// see https://github.com/henrygd/gopsutil/issues/596#issuecomment-432707831 for implementation details
 	pid := p.Pid
 	statPath := common.HostProcWithContext(ctx, strconv.Itoa(int(pid)), "stat")
 	contents, err := os.ReadFile(statPath)

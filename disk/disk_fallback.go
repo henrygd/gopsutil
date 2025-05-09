@@ -6,7 +6,7 @@ package disk
 import (
 	"context"
 
-	"github.com/shirou/gopsutil/v4/internal/common"
+	"github.com/henrygd/gopsutil/v4/internal/common"
 )
 
 func IOCountersWithContext(_ context.Context, _ ...string) (map[string]IOCountersStat, error) {

@@ -10,10 +10,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/shirou/gopsutil/v4/cpu"
-	"github.com/shirou/gopsutil/v4/internal/common"
-	"github.com/shirou/gopsutil/v4/mem"
-	"github.com/shirou/gopsutil/v4/net"
+	"github.com/henrygd/gopsutil/v4/cpu"
+	"github.com/henrygd/gopsutil/v4/internal/common"
+	"github.com/henrygd/gopsutil/v4/mem"
+	"github.com/henrygd/gopsutil/v4/net"
 )
 
 var (

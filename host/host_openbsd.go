@@ -14,8 +14,8 @@ import (
 
 	"golang.org/x/sys/unix"
 
-	"github.com/shirou/gopsutil/v4/internal/common"
-	"github.com/shirou/gopsutil/v4/process"
+	"github.com/henrygd/gopsutil/v4/internal/common"
+	"github.com/henrygd/gopsutil/v4/process"
 )
 
 const (

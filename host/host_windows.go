@@ -15,8 +15,8 @@ import (
 
 	"golang.org/x/sys/windows"
 
-	"github.com/shirou/gopsutil/v4/internal/common"
-	"github.com/shirou/gopsutil/v4/process"
+	"github.com/henrygd/gopsutil/v4/internal/common"
+	"github.com/henrygd/gopsutil/v4/process"
 )
 
 var (
@@ -57,7 +57,7 @@ type systemInfo struct {
 }
 
 func HostIDWithContext(_ context.Context) (string, error) {
-	// there has been reports of issues on 32bit using golang.org/x/sys/windows/registry, see https://github.com/shirou/gopsutil/pull/312#issuecomment-277422612
+	// there has been reports of issues on 32bit using golang.org/x/sys/windows/registry, see https://github.com/henrygd/gopsutil/pull/312#issuecomment-277422612
 	// for rationale of using windows.RegOpenKeyEx/RegQueryValueEx instead of registry.OpenKey/GetStringValue
 	var h windows.Handle
 	err := windows.RegOpenKeyEx(windows.HKEY_LOCAL_MACHINE, windows.StringToUTF16Ptr(`SOFTWARE\Microsoft\Cryptography`), 0, windows.KEY_READ|windows.KEY_WOW64_64KEY, &h)

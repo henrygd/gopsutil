@@ -6,7 +6,7 @@ import (
 	"context"
 	"encoding/json"
 
-	"github.com/shirou/gopsutil/v4/internal/common"
+	"github.com/henrygd/gopsutil/v4/internal/common"
 )
 
 type Warnings = common.Warnings

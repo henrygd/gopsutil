@@ -11,7 +11,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/shirou/gopsutil/v4/internal/common"
+	"github.com/henrygd/gopsutil/v4/internal/common"
 )
 
 func TestTimes(t *testing.T) {

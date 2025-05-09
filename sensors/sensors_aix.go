@@ -6,7 +6,7 @@ package sensors
 import (
 	"context"
 
-	"github.com/shirou/gopsutil/v4/internal/common"
+	"github.com/henrygd/gopsutil/v4/internal/common"
 )
 
 const (

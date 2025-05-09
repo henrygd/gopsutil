@@ -13,7 +13,7 @@ import (
 
 	"github.com/tklauser/go-sysconf"
 
-	"github.com/shirou/gopsutil/v4/internal/common"
+	"github.com/henrygd/gopsutil/v4/internal/common"
 )
 
 // VirtualMemory for Solaris is a minimal implementation which only returns

@@ -11,7 +11,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/shirou/gopsutil/v4/internal/common"
+	"github.com/henrygd/gopsutil/v4/internal/common"
 )
 
 func TestTimesEmpty(t *testing.T) {
@@ -87,7 +87,7 @@ func TestCountsAgainstLscpu(t *testing.T) {
 	assert.Equalf(t, expectedLogical, logical, "expected %v, got %v", expectedLogical, logical)
 }
 
-func TestCountsLogicalAndroid_1037(t *testing.T) { // https://github.com/shirou/gopsutil/issues/1037
+func TestCountsLogicalAndroid_1037(t *testing.T) { // https://github.com/henrygd/gopsutil/issues/1037
 	t.Setenv("HOST_PROC", "testdata/linux/1037/proc")
 
 	count, err := Counts(true)

@@ -9,7 +9,7 @@ import (
 
 	"github.com/yusufpapurcu/wmi"
 
-	"github.com/shirou/gopsutil/v4/internal/common"
+	"github.com/henrygd/gopsutil/v4/internal/common"
 )
 
 type msAcpi_ThermalZoneTemperature struct { //nolint:revive //FIXME

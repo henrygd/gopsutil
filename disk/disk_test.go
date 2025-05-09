@@ -10,7 +10,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/shirou/gopsutil/v4/internal/common"
+	"github.com/henrygd/gopsutil/v4/internal/common"
 )
 
 func TestUsage(t *testing.T) {
@@ -50,7 +50,7 @@ func TestIOCounters(t *testing.T) {
 	}
 }
 
-// https://github.com/shirou/gopsutil/issues/560 regression test
+// https://github.com/henrygd/gopsutil/issues/560 regression test
 func TestIOCounters_concurrency_on_darwin_cgo(t *testing.T) {
 	if runtime.GOOS != "darwin" {
 		t.Skip("darwin only")
